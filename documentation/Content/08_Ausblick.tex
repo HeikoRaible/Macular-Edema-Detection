@@ -1,0 +1,43 @@
+In diesem Kapitel wird abschließend ein Ausblick gegeben, wie die umgesetzten Verfahren verbessert oder auch für weitere Projekte erweitert werden könnten. 
+
+Wie im Fazit bereits gesagt, versprechen die Ergebnisse bereits eine Anwendbarkeit in der Praxis. Da sich in diesem Projekt zum ersten Mal mit der Erkennung von Ödemen in Kooperation mit dem Uniklinikum Münster beschäftigt wurde, sind selbstverständlich noch vielerlei Verbesserungen und Erweiterungen denkbar, die im Rahmen dieses Projektes nicht möglich waren. 
+
+Auf einige dieser Aspekte wird im folgenden eingegangen. 
+
+\subsubsection{Datenvorverarbeitung}
+
+Bei weiterer Arbeit an diesem Projekt wäre es für eine Qualitätssteigerung empfehlenswert darauf zu achten, dass mehr Bilder mit Ödemen in den Daten enthalten sind und/oder diese mittels Augmentierungsverfahren dynamisch zu vervielfältigen.
+
+Das Segmentieren der Bilder würde im Idealfall von Experten statt Laien durchgeführt werden, um eine medizinische Korrektheit besser gewährleisten zu können.
+
+Bei mehr als einer segmentierenden Person sollte auch darauf geachtet werden, vorher klare Richtlinien zu formulieren, um die Segmentierung so einheitlich wie möglich zu machen.
+
+Um mit einem Ödem verwechselbare Gegebenheiten wie tote Zellen, Netzhautablösungen oder visuell ähnliche Bereiche unter der RPE besser ausschließen zu können wäre es möglich, diese ebenfalls beim Segmentieren zu markieren und zu lernen, sodass das Netz mehr Informationen mitgeliefert bekommt um diese auseinander zu halten.
+
+\subsubsection{Klassifikation als Vorfilter}
+
+Wie in vorherigen Kapiteln beschrieben versprechen wir uns in der Theorie einen großen Gewinn an Spezifität durch das Klassifikationsmodell als Vorfilter für das Segmentierungsmodell.
+
+Nachdem uns der Effekt des Verlustes an Sensitivität durch Kombination der Modelle bei nicht deckungsgleichen echt positiven Bildern bewusst wurde, sehen wir hier das Gebot einer noch höheren Wertlegung auf die Sensitivität im Klassifikationsmodell, auch auf Kosten der Spezifität dieser, um diesem Effekt entgegen zu wirken und keine kranken Patienten fälschlicherweise als gesund zu deklarieren.
+
+Um den Gewinn an Sensitivität und Verlust an Spezifität genau quantifizieren zu können, sollten Trainings- und Testdatensätze beider Modelle die gleichen sein, wobei die Segmentierung ausschließlich mit den positiven Bildern dieser Datensätze arbeitet.
+
+\subsubsection{Verwendung von augmentierten Daten bei der Segmentierung}
+Eine Herausforderung für das Trainings des Mask R-CNN stellte der geringe Datenumfang dar. Methoden zur Augmentierung der Bilder wurden bereits umgesetzt. In Folgeprojekten wäre es daher denkbar, das Problem der geringen Datenmenge durch das Training auf augmentierten Daten zu umgehen.
+
+\subsubsection{Semi-automatisiertes Feedback}
+
+Eine zusätzliche Funktionalität zur Verbesserung der Ergebnisse wäre ein semi-automatisiertes Ärzte Feedback. Hierbei gäben die tatsächlich durchgeführten Behandlungen ein Feedback, welches später mit höherer Gewichtung in ein erneutes Training einfließen könnte, um somit die Genauigkeit kontinuierlich zu verbessern.  
+
+\subsubsection{Erweiterung der Einbindung in Fidus}
+
+Neben der Performanceverbesserung durch Aufrüstung der Hardware stellen wir fest, dass die Ausgabe an Informationen in Fidus momentan mit den Klassen Ödem Ja/Nein und bei Ja, deren Gesamtpixelanzahl sehr beschränkt ist und einer Erweiterung bedarf, um die Ärzte besser bei ihrer Entscheidung zu unterstützen. Einige Beispiele für anzeigbare Informationen:
+
+\begin{itemize}
+    \item Die Bilder mit eingezeichneten Segmentierungsflächen
+    \item Die Anzahl Bilder auf denen Ödeme gefunden wurden
+    \item Wie sicher das Segmentierungsmodell behauptet zu sein
+    \item Ein geschätztes Volumen des Ödems anhand Interpolation zwischen den Querschnitten
+    \item Eine Einteilung der Ödeme in Größenklassen, welche interpretierbarer als große Pixelanzahlen sein könnten
+    \item Eine normierte Gesamtpixelanzahl, um Vergleichbarkeit unabhängig der Anzahl Bilder eines Auges und/oder der Auflösung der Bilder zu schaffen
+\end{itemize}

@@ -1,0 +1,76 @@
+
+% ----------------------------
+% Pakete - Bilder und Symbole 
+% ----------------------------
+
+\usepackage{graphicx}          % \includegraphics (pdf-Version)
+\usepackage{amssymb}           % AMS - Symbole
+%\usepackage{amsmath}          % AMS - Umgebungen + Befehle (\begin{cases}...\end{cases},\pmatrix)
+
+% ----------------------------
+% Pakete - Format und Sprache
+% ----------------------------
+
+\usepackage[paper=a4paper,left=2.5cm,right=2.5cm,top=2cm,bottom=2.5cm]{geometry} % Formatierung
+\usepackage[ngerman]{babel}    % Deutsche Bezeichnungen und Trennung nach neuer Rechtschreibung
+\usepackage[T1]{fontenc}       % Trennen mit Umlauten
+%\usepackage[latin1]{inputenc} % Umlaute direkt im Text (ISO 8859-1 UNIX-Systeme)
+%\usepackage[utf8]{inputenc}   % Umlaute direkt im Text (MS-Windows)
+
+% ----------------------------
+% Pakete - Feineinstellungen
+% ----------------------------
+
+\usepackage{courier}           % Courier Schrift in verb-, verbatim- und listing-Umgebungen
+%\usepackage{cmbright}         % Schriften-Gruppe im Text [cmbright, mathpazo (Palatino), times]
+%\usepackage{hyperref}         % Links im Inhaltsverzeichnis und \url
+%\usepackage{microtype}        % Bessere Darstellung: margin + extra kerning, expansion, tracking, and spacing
+\usepackage{titlesec}          % Packet zur Anpassung der Titel der Kapitel
+\titleformat{\chapter}[block]{\bfseries\LARGE}{\thechapter}{2.75ex}{}[\vspace{1ex}\titlerule]
+
+% ----------------------------
+% Sonstiges
+% ----------------------------
+
+\usepackage{nicefrac}
+\usepackage{mathtools}
+
+
+% ----------------------------
+% Parameter
+% ----------------------------
+
+\linespread{1.05}              % Zeilenabstand einstellen
+\setlength{\parindent}{0pt}    % Global \noindent
+\setlength{\parskip}{5pt}      % Inhaltsverzeichnis + Platz zwischen Titel und Text
+
+% ----------------------------
+% Eigene Definitionen
+% ----------------------------
+
+\newcommand{\qed}{\ensuremath{\square} } % Statt q.e.d. ein kleines Quadrat
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Beispiel}{Beispiel}[section]
+\newtheorem{Algorithmus}{Algorithmus}[section]
+\newtheorem{Bemerkung}{Bemerkung}[section]
+\newenvironment{Beweis}[1][Beweis]{\begin{trivlist}\item[\hskip \labelsep {\textit{#1 }}]}{\end{trivlist}
+\hfill\qed}
+
+% ----------------------------
+% Quellcode-Listings
+% ----------------------------
+
+\usepackage{listings}
+\lstset{
+language    = python,
+basicstyle  = \ttfamily, 
+frame       = single,
+numbers     = left, 
+numberstyle = \scriptsize
+}
+\usepackage{float}
+\newfloat{listing}{htbp}{scl}[chapter]
+\floatname{listing}{Listing}
+
+% ----------------------------

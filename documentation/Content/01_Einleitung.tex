@@ -1,0 +1,29 @@
+Im Rahmen des Data Science Projektes an der Hochschule Darmstadt wird, in Kooperation mit der Klinik für Augenheilkunde an der Uniklinik Münster, an Methoden zur Diagnostik von Erkrankungen des Auges geforscht. 
+
+In bereits mehreren Vorgängerprojekten wurden, mit Hilfe von Machine-Learning-Verfahren (ML-Verfahren), Methoden zur Diagnostik solcher Erkrankungen, wie der Glaukomerkennung, entwickelt.
+
+Die Erkennung und Behandlung von Makuladegeneration ist eine der Diagnostiken, die die Augenärzte an der Uniklinik Münster durchführen. Im Praxisalltag werden für die Erkennung von Makulaödemen Aufnahmen des Auges, sogenannte Optische Kohärenz-Tomographien (OCT), gemacht. Nach Sichtung der OCT-Scans durch den Arzt wird anschließend die entsprechende Therapie gewählt. Im Rahmen dieses Projektes soll ein Verfahren zur Erkennung von Makulaödemen entwickelt werden, um diesen Vorgang zu unterstützen.
+
+\section{Zielsetzung}
+
+Ziel des Projektes ist es, Makulaödeme auf OCT-Scans zu erkennen.
+Durch maschinelles Lernen soll ein Verfahren entwickelt werden, das in der Lage ist, Ödeme zuverlässig auf OCT-Scans zu erkennen. 
+Das Verfahren soll Ärzte bei der Diagnostik unterstützen, indem die Erkennung von Ödemen automatisiert nach der Untersuchung von Patienten durchgeführt wird.
+
+Neben der Erkennung von Ödemen ist es im medizinischen Sinne bedeutend, inwiefern sich bei Patienten vorliegende Ödeme entwickeln. Zu diesem Zweck soll neben der Erkennung eine Verlaufskontrolle entwickelt werden, zu der die Größe der Ödeme ermittelt wird. Über die Größe erhalten Ärzte Aufschluss darüber, wie weit eine Erkrankung bereits fortgeschritten ist.
+
+Um die praktische Anwendbarkeit bei der Diagnostik zu demonstrieren, soll das entwickelte Verfahren auf den Computersystemen des Uniklinikums installiert werden. 
+Ziel ist es hier den Prototypen in das bestehende Softwaresystem zu integrieren, um einen ersten technischen Durchstich zu erlangen.
+
+\newpage
+\section{Vorgehen und gewählte Methoden}
+
+Um die Ziele wie im vorherigen Abschnitt beschrieben zu erreichen, werden die Aufgaben in drei Schritte aufgeteilt. Als erstes die Vorverarbeitung der Daten, anschließend die Implementierung der ML-Verfahren und zuletzt das Vereinen dieser in einem Prototypen auf dem Zielsystem. Die einzelnen Schritte werden in folgenden Kapiteln genauer beschrieben. 
+
+Als Testdaten hat das Uniklinikum 34.943 OCT-Bilder zur Verfügung gestellt, von denen einige ein Ödem aufweisen. 
+Für das Trainieren des gewählten ML-Verfahrens ist es notwendig, neben den OCT-Bildern auch die Lage und Form der Ödeme als Information mit einzugeben. 
+Um das zu ermöglichen werden die Ödeme auf den vorhandenen OCT Bildern zunächst händisch segmentiert. 
+
+Der nächste Schritt ist es, die OCT-Bilder nach Existenz von Ödemen zu klassifizieren. Hierzu dient ein Convolutional Neural Network (CNN) der EfficientNet Architektur. Neben der reinen Klassifizierung von Ödemen soll auch die Größe der Ödeme bestimmt werden. Dazu ist ein weiteres Modell nötig, das nicht nur das Vorhandensein von Ödemen bestimmt, sondern auch deren Lage auf den OCT-Bildern detektieren kann. Hierfür wird auf Basis eines vortrainierten Mask R-CNN ein Modell zur Instance Segmentation von Ödemen erstellt.
+
+Schließlich werden die beiden Modelle in einem Prototypen vereint, der in die Systeme des Uniklinikums eingebettet wurde. Der somit erreichte Durchstich zeigt die technische Machbarkeit der Integration von ML-Verfahren für diese Problemstellung auf und vermittelt den Ärzten einen ersten Eindruck, wie die Anwendung in der Praxis aussehen könnte. 

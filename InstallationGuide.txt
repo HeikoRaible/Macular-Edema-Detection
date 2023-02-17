@@ -1,0 +1,19 @@
+1. install python
+    https://www.python.org/downloads/
+
+2. install required python packages
+    in console, go to the current directory, then:
+        "pip install -r requirements.txt"
+    or
+        "pip install torch torchvision numpy pillow"
+
+3. unzip the split zip files in "models/"
+
+4. run script
+    in console, go to the current directory, then:
+        "python main.py TARGET_DIR CHECKING_INTERVAL"
+    with
+        "TARGET_DIR" as relative or absolute path
+        "CHECKING_INTERVAL" in minutes
+    for example
+        "python main.py path/to/target/dir 5"

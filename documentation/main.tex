@@ -1,0 +1,215 @@
+\documentclass[10pt]{report} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+% ----------------------------
+\input{report_def}
+% ----------------------------
+
+% ----------------------------
+\begin{document}
+% ----------------------------
+
+% ----------------------------
+\begin{titlepage}
+% ----------------------------
+\begin{center}\  
+
+\vfill
+\includegraphics[width=0.6\textwidth]{./pic/Logo_h_da}
+\vfill
+Fachbereich Mathematik und Naturwissenschaften\\
+Fachbereich Informatik\\
+Studiengang Data Science
+\vfill
+{\LARGE Data Science Projekt} \\[0.5cm]
+\vfill
+{\Huge Erkennung von Makulaödemen \\
+durch maschinelles Lernen}
+\vfill
+
+Vorgelegt von  
+
+\begin{tabular}{ll}
+Heiko\ Raible & Matrikelnummer : \ 769082 \\
+Corinna Erika\ Rentschler  & Matrikelnummer : \ 769282 \\
+Svenja Sophia\ Schuder & Matrikelnummer : \ 769277 \\
+Thi Nhat Le\ Pham  & Matrikelnummer : \ 770407 \\
+\end{tabular}
+
+am  \today
+
+\vfill
+\begin{tabular}{ll}
+Referent     & Prof.\ Dr. \ Arnim Malcherek \\
+Referent   & Prof.\ Dr. \ Horst Zisgen
+\end{tabular}
+\vfill
+\end{center}
+% ----------------------------
+\end{titlepage}
+% ----------------------------
+
+% ----------------------------
+\begin{abstract} 
+% ----------------------------
+
+Ziel des Projektes war es, auf einem System der Uniklinik Münster über maschinelle Lernverfahren Makulaödeme auf dort durchgeführten OCT-Scans zu erkennen, die Größe dieser zu vermessen und diese Informationen in die in der Uniklinik verwendeten Software Fidus einzubinden.
+
+Hierbei war die Grundidee zur Umsetzung der maschinellen Lernverfahren ein zweistufiges Verfahren: Ein Efficient-Net als Vorfilter sowie ein Mask-R-CNN als Segmentierungsmodell. Beide Modelle einzeln liefern zufriedenstellende Ergebnisse. Da das Segmentierungsmodell einzeln zu besseren Ergebnissen als die Kombination beider Modelle im Rahmen eines zweistufigen Verfahrens führt, ist im finalen Prototypen nur dieses Modell eingebunden.
+
+Ein Qualitätsgewinn der Vorhersagen durch die Klassifikation als Vorfilter wurde in Frage gestellt, scheint jedoch vielversprechend und Bedarf weiterer Untersuchungen.
+
+Mit dem Mask R-CNN Segmentierungsmodell sowie einem Skript, mithilfe dessen die Ergebnisse des Modells in die Fidus Software eingebunden wird, werden die gesetzten Ziele zufriedenstellend erreicht und beweisen somit eine technische Anwendbarkeit in der Praxis.
+
+% ----------------------------
+\end{abstract}
+% ----------------------------
+
+% ----------------------------
+\tableofcontents
+% ----------------------------
+
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Einleitung}
+% ----------------------------
+\input{Content/01_Einleitung}
+% ----------------------------
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Datenvorverarbeitung}
+% ----------------------------
+\input{Content/03_Datenvorverarbeitung}
+
+
+
+
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Klassifikation}
+% ----------------------------
+\input{Content/04_Klassifikation}
+
+
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Segmentierung}
+% ----------------------------
+\input{Content/05_Segmentierung}
+
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Prototyp}
+% ----------------------------
+\input{Content/06_Prototyp}
+
+
+
+
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Fazit}
+% ----------------------------
+\input{Content/07_Fazit}
+
+
+
+
+% ---------------------------------------------------------------------------------------------------------
+\chapter{Ausblick}
+% ----------------------------
+\input{Content/08_Ausblick}
+
+---------------------------
+\chapter{Anhang}
+% ----------------------------
+% TODO include Anhang
+\input{Content/09_Anhang}
+
+
+
+
+% ----------------------------
+% Bibliography
+% ----------------------------
+
+\begin{thebibliography}{}
+
+
+\bibitem[1]{1} Somit Saha: A Comprehensive Guide to Convolutional Neural Networks - The ELI5 way
+ \url{https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53} [26.03.2022]
+
+\bibitem[2]{2} ujjwalkarn: An Intuitive Explanation of Convolutional Neural Network
+ \url{https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/} [26.03.2022]
+
+\bibitem[3]{3} Rikiya Yamashita et al.: Convolutional neural networks: an overview and application in radiology
+ \url{https://insightsimaging.springeropen.com/track/pdf/10.1007/s13244-018-0639-9.pdf} [26.03.2022]
+
+\bibitem[4]{4} Mayank Mishra: Convolutional Neural Networks, Explained 
+ \url{https://towardsdatascience.com/convolutional-neural-networks-explained-9cc5188c4939#:~:text=A%20Convolutional%20Neural%20Network%2C%20also,binary%20representation%20of%20visual%20data.} [26.03.2022]
+
+\bibitem[5]{5} Anh H. Reynolds: Convolutional Neural Networks, (CNNs)
+ \url{https://anhreynolds.com/blogs/cnn.html} [26.03.2022]
+ 
+\bibitem[6]{6} Daniel Jurafsky, James H. Martin: Chapter 5 Logistische Regression
+ \url{https://web.stanford.edu/~jurafsky/slp3/5.pdf#page8} [26.03.2022]
+
+
+\bibitem[7]{7} Muhammad Tayyab: Mask RCNN \url{https://www.crcv.ucf.edu/wp-content/uploads/2019/03/CAP6412_Spring2018_Mask-RCNN_New.pdf} [26.03.2022]
+
+\bibitem[8]{8} Muhammad Tayyab: Mask RCNN \url{https://www.youtube.com/playlist?list=LL} [26.03.2022]
+
+
+\bibitem[9]{9} Shaoqing Ren et al.: Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks
+ \url{https://arxiv.org/pdf/1506.01497.pdf} [26.03.2022]
+
+\bibitem[10]{10} Sambasivarao. K: Region Proposal Network — A detailed view \url{https://towardsdatascience.com/region-proposal-network-a-detailed-view-1305c7875853} [26.03.2022]
+
+\bibitem[11]{11} Tanay Karmakar: Region Proposal Network (RPN)-Backbone of Faster R-CNN \url{https://medium.com/egen/region-proposal-network-rpn-backbone-of-faster-r-cnn-4a744a38d7f9} [26.03.2022]
+
+\bibitem[12]{12} Hyeonwoo Noh et al.: Leaning Deconvolution Network for Semantic Segmentation \url{https://arxiv.org/pdf/1505.04366.pdf} [26.03.2022]
+
+\bibitem[13]{13} Hao Tsui: 2014 Fully Convolutional Network (FCN) Paper summary \url{https://www.youtube.com/watch?v=Ahge3GzQ3Kg&t=887s} [26.03.2022]
+
+\bibitem[14]{14} Connor Shorten: Data Augmentation on Images \url{https://towardsdatascience.com/data-augmentation-and-images-7aca9bd0dbe8} [30.03.2022]
+
+\bibitem[15]{15} AWS: Amazon EC2 P2-Instances \url{https://aws.amazon.com/de/ec2/instance-types/p2/}  [30.03.2022]
+
+\bibitem[16]{16} Tsung-Yi Lin et al.: Microsoft COCO: Common Objects in Context \url{https://arxiv.org/pdf/1405.0312.pdf}  [30.03.2022]
+
+
+\bibitem[17]{17} nbro: What is a fully convolution network? \url{https://ai.stackexchange.com/questions/21810/what-is-a-fully-convolution-network}  [31.03.2022]
+
+\bibitem[18]{18} Great Learning Team: Fully Convolutional Network (Semantic Segmentation) \url{https://www.mygreatlearning.com/blog/fcn-fully-convolutional-network-semantic-segmentation/}  [31.03.2022]
+
+\bibitem[19]{19} Nicolai Harich: Fully Convolutional Networks for
+Semantic Segmentation
+from RGB-D images \url{https://hdms.bsz-bw.de/frontdoor/deliver/index/docId/4880/file/master_thesis_fcn_harich.pdf}  [31.03.2022]
+
+\bibitem[20]{20} Nikhil Sardana: Fully Convolutional Networks \url{https://tjmachinelearning.com/lectures/1718/fcn/fcn.pdf}  [31.03.2022]
+
+\bibitem[21]{21} Dive into Deep Learning: 13.10. Transposed Convolution \url{https://d2l.ai/chapter_computer-vision/transposed-conv.html}  [31.03.2022]
+
+\bibitem[22]{22} EffizientNet Pytorch: GitHub \url{https://github.com/lukemelas/EfficientNet-PyTorch} [31.03.2022]
+
+\bibitem[23]{23} draw.io:  Flowchart Maker \& Online Diagram Software \url{https://www.draw.io}
+
+\bibitem[24]{24} VGG Image Annotator \url{https://www.robots.ox.ac.uk/\~vgg/software/via/}
+
+\end{thebibliography}
+
+% ----------------------------
+\appendix
+
+% ----------------------------
+\end{document}
+% ----------------------------

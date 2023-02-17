@@ -1,0 +1,22 @@
+Die gewählten Modelle und der gewählte Ansatz haben sich als geeignet herausgestellt und die Ergebnisse, die im Rahmen des Projekts erzielt wurden, beweisen bereits eine technische Anwendbarkeit in der Praxis. 
+Zudem ist festzustellen, dass alle zu Beginn gesetzten Ziele des Projekts umgesetzt und erreicht wurden.
+
+
+So erzielt die Klassifikation bereits eine zuverlässige Erkennung von Ödemen auf OCT-Scans mit einer Sensitivität von 0.98 und Spezifität von 0.82.
+Darüber hinaus erweist sich auch die Segmentierung als gute Methode zur Erkennung und Ausmessung von Ödemen, was im Rahmen einer Verlaufskontrolle verwendet werden kann. Das Mask R-CNN als binärer Klassifikator weist eine Sensitivität von 0.98 und Spezifität von 0.91 auf. Auf den Testdaten ergab sich eine mediane Intersection over Union von 0.70, wobei der Median bei großen Ödemen höher sowie die Streuung der Verteilung geringer ist. Auch ein weiteres Modell, welches mit mehr Testdaten evaluiert wurde und somit in der Auswertung höhere Aussagekraft hat, zeigt sich ein ähnlicher Median von 0.68.
+
+
+Insgesamt ist aus technischer Sicht eine gewisse Robustheit der Verfahren und Ergebnisse festzustellen. 
+Auch wurde durch den erstellten Prototypen sowohl die technische Machbarkeit sowie Anwendbarkeit in der Praxis demonstriert. Zwar ist im aktuellen Prototypen nur das Segmentierungsmodell enthalten, da ein zweistufiges Verfahren mit separater Klassifikation zu einer geringeren Sensitivität führen würde. Dennoch verspricht eine erfolgreiche Umsetzung mit beiden Methoden in Kombination ein noch besseres Ergebnis. 
+Mit der Klassifikation als Vorfilter ist zu erwarten, dass sich die Problematik der hohen Spezifität bei der Segmentierung verbessert.
+Daher wäre eine noch genauere vergleichbare Evaluierung und gegebenenfalls Verbesserung des Protoypen mit beiden Verfahren erstrebenswert.  
+
+
+Eines der Ziele war es eine Verlaufskontrolle zu implementieren, wodurch die Ärzte bei der Diagnostik von Ödemen in Routineuntersuchungen unterstützt werden. Idealerweise würde diese Auswertung den Ärzten später durch ein Programm abgenommen. Der derzeitige Prototyp bietet aktuelle noch keine ausreichende Genauigkeit, als das er die Diagnostik eines Arztes ablösen könnte. Zudem ist neben der Einschätzung des Projektteams auch die Evaluierung der erzielten Ergebnisse durch Mediziner notwendig, um darüber entscheiden zu können, inwiefern sie im medizinischen Kontext bereits anwendbar sind. 
+
+Zudem wurde zum jetzigen Stand eine eher rudimentäre und technische Art der Verlaufskontrolle umgesetzt. Für eine ernsthafte Anwendung in der Praxis, wäre also eine Erweiterung des bisherigen Verfahrens erstrebenswert. Hierfür wäre es von Vorteil einen Ausgabewert gemeinsam mit den Ärzten des Uniklinikums zu entwickeln, der in der Praxis eine verbesserte medizinische Aussagekraft hat. 
+Eine erste Idee und mögliche Umsetzung wird im Ausblick erläutert. 
+
+
+
+

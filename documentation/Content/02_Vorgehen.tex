@@ -1,0 +1,10 @@
+Um die Ziele wie im vorherigen Kapitel beschrieben zu erreichen, werden die Aufgaben in drei Schritte aufgeteilt. Als erstes die Vorverarbeitung der Daten, anschließend die Implementierung der ML-Verfahren und zuletzt das Vereinen dieser in einem Prototypen auf dem Zielsystem. Die einzelnen Schritte werden in folgenden Kapiteln genauer beschrieben. 
+
+Als Testdaten hat das Uniklinikum 34.943 OCT-Bilder zur Verfügung gestellt, von denen einige ein Ödem aufweisen. 
+Für das Trainieren des gewählten ML-Verfahrens ist es notwendig, neben den OCT-Bildern auch die Lage und Form der Ödeme als Information mit einzugeben. 
+Um das zu ermöglichen werden die Ödeme auf den vorhandenen OCT Bildern zunächst händisch segmentiert. 
+
+Der nächste Schritt ist es, die OCT-Bilder nach Existenz von Ödemen zu klassifizieren. Hierzu dient ein Convolutional Neural Network (CNN) der EfficientNet Architektur. Neben der reinen Klassifizierung von Ödemen soll auch die Größe der Ödeme bestimmt werden. Dazu ist ein weiteres Modell nötig, das nicht nur das Vorhandensein von Ödemen bestimmt, sondern auch deren Lage auf den OCT-Bildern detektieren kann. Hierfür wird auf Basis eines vortrainierten Mask R-CNN ein Modell zur Instance Segmentation von Ödemen erstellt.
+
+Schließlich werden die beiden Modelle in einem Prototypen vereint, der in die Systeme des Uniklinikums eingebettet wurde. Der somit erreichte Durchstich zeigt die technische Machbarkeit der Integration von ML-Verfahren für diese Problemstellung auf und vermittelt den Ärzten einen ersten Eindruck, wie die Anwendung in der Praxis aussehen könnte. 
+Ein Skript wertet neu aufgenommene OCT–Bilder von Patienten mit den CNN-Modellen aus. Das Ergebnis kann dann in der Fidus Software auf der grafischen Oberfläche angezeigt werden. 
